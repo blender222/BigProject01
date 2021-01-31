@@ -1,0 +1,121 @@
+@import "./reset";
+@import "./mixins";
+.login-modal {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  font-family: var(--font-family);
+  .container-main {
+    padding: 30px;
+    width: 100%;
+    @media screen and (min-width: 500px) {
+      max-width: 500px;
+    }
+  }
+  .change-box {
+    display: flex;
+    margin-bottom: 40px;
+    .title {
+      flex-grow: 1;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin-bottom: 0;
+      padding: 5px 0;
+      font-size: 20px;
+      font-weight: 400;
+      color: var(--color-primary);
+      background-color: #ffffff;
+      border: 1px solid var(--color-primary);
+      transition: color .2s, background-color .3s;
+      --brs: 6px;
+    }
+    .title-login {
+      border-radius: var(--brs) 0 0 var(--brs);
+    }
+    .title-register {
+      border-radius: 0 var(--brs) var(--brs) 0;
+    }
+    .selected {
+      color: #ffffff;
+      background-color: var(--color-primary);
+    }
+  }
+  .login-block, .register-block {
+    display: none;
+    position: relative;
+    &.show {
+      display: block;
+    }
+  }
+  .form {
+    display: flex;
+    flex-direction: column;
+    .form-group {
+      margin-bottom: 10px;
+    }
+    .input, .button {
+      padding: 10px;
+      border-radius: 2px;
+      font-size: 16px;
+      font-family: Arial;
+      outline: none;
+    }
+    .input {
+      width: 100%;
+      font-weight: 400;
+      border: 1px solid rgba(0, 0, 0, .15);
+      &::placeholder {
+        color: #999999;
+      }
+      &:focus {
+        border-color: rgba(0, 0, 0, .5);
+        box-shadow: 0 0 4px rgba(0, 0, 0, .15);
+      }
+      &.input-warn {
+        border-color: var(--color-warn);
+        background-color: var(--color-warnBg);
+        &::placeholder {
+          color: #ff7777;
+        }
+      }
+    }
+    .warn {
+      font-size: 14px;
+      min-height: 26px;
+      color: var(--color-warn);
+      border: none;
+    }
+    .prompt {
+      margin-top: 2px;
+      margin-left: 5px;
+      font-size: 14px;
+      color: #555555;
+    }
+    .button {
+      margin-top: 10px;
+      font-size: 16px;
+      font-weight: 500;
+      letter-spacing: 1px;
+      background-color: var(--color-primary);
+      border: none;
+      color: #ffffff;
+      &:hover {
+        filter: brightness(1.1);
+      }
+    }
+  }
+  .other {
+    margin-top: 20px;
+    display: flex;
+    justify-content: space-between;
+    .box {
+      display: flex;
+      a {
+        display: block;
+      }
+    }
+  }
+}

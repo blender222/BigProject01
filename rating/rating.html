@@ -1,0 +1,111 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <title>Document</title>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
+
+  <style>
+    .container {
+      margin-top: 100px;
+    }
+    .box {
+      display: flex;
+    }
+    .star {
+      width: 72px;
+      height: 72px;
+      fill: #bbbbbb;
+      filter: drop-shadow(0px 0px 2px rgba(0, 0, 0, 0.3));
+    }
+    .star:hover {
+      cursor: pointer;
+    }
+    .star.hover {
+      filter: drop-shadow(0px 0px 3px rgba(0, 0, 0, 0.3));
+    }
+    .star.active {
+      fill: rgba(255, 233, 0, 1);
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container">
+    <div class="box">
+      <svg class="star" idth="48" height="48" viewBox="0 0 24 24">
+        <use xlink:href="./svg/star.svg#star"></use>
+      </svg>
+      <svg class="star" idth="48" height="48" viewBox="0 0 24 24">
+        <use xlink:href="./svg/star.svg#star"></use>
+      </svg>
+      <svg class="star" idth="48" height="48" viewBox="0 0 24 24">
+        <use xlink:href="./svg/star.svg#star"></use>
+      </svg>
+      <svg class="star" idth="48" height="48" viewBox="0 0 24 24">
+        <use xlink:href="./svg/star.svg#star"></use>
+      </svg>
+      <svg class="star" idth="48" height="48" viewBox="0 0 24 24">
+        <use xlink:href="./svg/star.svg#star"></use>
+      </svg>
+    </div>
+  </div>
+  <script>
+    const box = document.querySelector(".box");
+    const allStar = box.querySelectorAll(".star");
+    allStar.forEach((ele, index) => {
+      ele.rank = index;
+      const clearAllStar = (list) => {
+        list.forEach((ele) => {
+          ele.classList.remove("hover");
+          ele.classList.remove("active");
+        });
+      }
+      ele.addEventListener("mouseenter", function() {
+        clearAllStar(allStar);
+        for (let i = 0; i <= index; i++) {
+          allStar[i].classList.add("hover");
+          allStar[i].classList.add("active");
+        }
+      });
+      ele.addEventListener("mouseleave", function() {
+        clearAllStar(allStar);
+        for (let i = 0; i <= box.clickRank; i++) {
+          allStar[i].classList.add("active");
+        }
+      });
+      ele.addEventListener("click", function(event) {
+        box.clickRank = this.rank;
+        for (let i = 0; i < this.rank; i++) {}
+      });
+
+    });
+  </script>
+
+
+  <style>
+    svg {
+      outline: 1px solid #ff0000;
+    }
+    line {
+      stroke: #51BBA7;
+      stroke-width: 10;
+      /* stroke-dashoffset: 50; */
+      stroke-dasharray: 30;
+    }
+  </style>
+  <svg width="600" height="600" viewBox="0 0 600 600" version="1.1" xmlns="http://www.w3.org/2000/svg">
+    <line x1="0" y1="50" x2="600" y2="50" />
+  </svg>
+
+
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW" crossorigin="anonymous"></script>
+</body>
+
+</html>
