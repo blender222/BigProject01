@@ -57,16 +57,22 @@ const makeMonth = (obj_startDate, count) => {
           <div class="text">${d.getMonth() + 1}/${d.getDate()}</div>
         </div>
       `);
-    $ele_date.obj_date = d;
+    $ele_date[0].obj_date = d;
     $ele_date.on('click', function() {
       if ($row_date.focusDate)
         $row_date.focusDate.removeClass('selected');
       $(this).addClass('selected');
       $row_date.focusDate = $(this);
     });
+    // 恢復高亮上次選取
+    if ($row_date.focusDate) {
+      if ($row_date.focusDate[0].obj_date.getTime() == d.getTime()) {
+        $ele_date.addClass('selected');
+        $row_date.focusDate = $ele_date;
+      }
+    }
     $row_date.append($ele_date);
   }
-  console.log();
   // 結束空格
   // const start = $row_date[0].childElementCount + 1;
   // for (let i = start; i <= 42; i++) {
@@ -123,10 +129,10 @@ const isComplete = function() {
   let ok = true;
   switch (state) {
     case 0:
-      return true;
+      // return true;
       return $row_date.focusDate && $row_time.focusTime;
     case 1:
-      return true;
+      // return true;
       $.each($('.fill-info .required'), (i, input) => {
         if (!input.value) {
           ok = false;
