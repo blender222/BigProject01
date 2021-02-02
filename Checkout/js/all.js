@@ -34,6 +34,67 @@ $.ajax({
     });
   }
 });
+// model區
+const hasInput = (ele) => ele.value.length != 0;
+const hasSelect = (ele) => ele.selectedIndex != 0;
+const steps = [{
+
+}, {
+  inputs: [{
+    ele: document.querySelector('#fill-info #input_name'),
+    check: hasInput,
+  }, {
+    ele: document.querySelector('#fill-info #input_phone'),
+    check: (ele) => ele.value.length == 10,
+  }, {
+    ele: document.querySelector('#fill-info #input_email'),
+    check: hasInput,
+  }, {
+    ele: document.querySelector('#fill-info #county-list'),
+    check: hasSelect,
+  }, {
+    ele: document.querySelector('#fill-info #district-list'),
+    check: hasSelect,
+  }, {
+    ele: document.querySelector('#fill-info #input_address'),
+    check: hasInput,
+  }],
+  selects: document.querySelectorAll('#fill-info .select'),
+}, {
+  creditInputs: [{
+    ele: document.querySelector('#pay #input_credit'),
+    check: (ele) => ele.value.length == 19,
+  }, {
+    ele: document.querySelector('#pay #input_security'),
+    check: (ele) => ele.value.length == 3,
+  }, {
+    ele: document.querySelector('#pay #input_expireM'),
+    check: hasSelect,
+  }, {
+    ele: document.querySelector('#pay #input_expireY'),
+    check: hasSelect,
+  }],
+  atmInputs: [],
+  agrees: [{
+    ele: document.querySelector('#pay #read'),
+    check: (ele) => ele.checked,
+  }],
+}, {
+
+}];
+const test = function() {
+  steps[2].agrees.forEach((item) => {
+    console.log(item.check(item.ele));
+    // if (item.check(item.ele)) {
+
+    // }
+  });
+};
+// common event
+const onlyNum = $('.only-num');
+onlyNum.on('input', function() {
+  this.value = this.value.replace(/\D/g, '');
+});
 // pick time
 const $row_date = $('#row_date');
 const $row_time = $('#row_time');
@@ -42,8 +103,8 @@ const makeMonth = (obj_startDate, count) => {
   const startY = obj_startDate.getFullYear();
   const startM = obj_startDate.getMonth();
   const startD = obj_startDate.getDate();
-  $('.pick-time .year').text(`${startY}`);
-  $('.pick-time .month').text(`${startM + 1}`);
+  $('#pick-time .year').text(`${startY}`);
+  $('#pick-time .month').text(`${startM + 1}`);
   // 開始空格
   for (let i = 0; i < obj_startDate.getDay(); i++) {
     $row_date.append(`<div class="date"></div>`);
@@ -53,14 +114,15 @@ const makeMonth = (obj_startDate, count) => {
       obj_now.getFullYear(), startM, startD + i
     );
     const $ele_date = $(`
-        <div class="date">
-          <div class="text">${d.getMonth() + 1}/${d.getDate()}</div>
-        </div>
-      `);
+      <div class="date">
+        <div class="text">${d.getMonth() + 1}/${d.getDate()}</div>
+      </div>
+    `);
     $ele_date[0].obj_date = d;
     $ele_date.on('click', function() {
-      if ($row_date.focusDate)
+      if ($row_date.focusDate) {
         $row_date.focusDate.removeClass('selected');
+      }
       $(this).addClass('selected');
       $row_date.focusDate = $(this);
     });
@@ -81,24 +143,6 @@ const makeMonth = (obj_startDate, count) => {
 };
 const $btn_lastM = $('#last-month');
 const $btn_nextM = $('#next-month');
-$btn_lastM.on('click', function() {
-  disableBtn($(this));
-  enableBtn($btn_nextM);
-  makeMonth(obj_tomorrow, generateCount);
-});
-$btn_nextM.on('click', function() {
-  disableBtn($(this));
-  enableBtn($btn_lastM);
-  const thisY = obj_now.getFullYear();
-  const nextM = obj_now.getMonth() + 1;
-  const obj_nextM = new Date(
-    thisY, nextM, 1
-  );
-  const obj_nextMonthEnd = (new Date(
-    thisY, nextM + 1, 0
-  )).getDate();
-  makeMonth(obj_nextM, obj_nextMonthEnd);
-});
 const thisY = obj_now.getFullYear();
 const thisM = obj_now.getMonth();
 const thisD = obj_now.getDate();
@@ -108,11 +152,30 @@ const obj_tomorrow = new Date(
 const obj_nextMonthEnd = new Date(
   thisY, thisM + 2, 0
 );
+$btn_lastM.on('click', function() {
+  disableBtn($(this));
+  enableBtn($btn_nextM);
+  makeMonth(obj_tomorrow, generateCount);
+});
+$btn_nextM.on('click', function() {
+  disableBtn($(this));
+  enableBtn($btn_lastM);
+  const tomorrowY = obj_tomorrow.getFullYear();
+  const tomorrowNextM = obj_tomorrow.getMonth() + 1;
+  const obj_tomorrowNextM = new Date(
+    tomorrowY, tomorrowNextM, 1
+  );
+  const obj_nextMonthEnd = (new Date(
+    tomorrowY, tomorrowNextM + 1, 0
+  )).getDate();
+  makeMonth(obj_tomorrowNextM, obj_nextMonthEnd);
+});
 let generateCount = ((obj_nextMonthEnd - obj_tomorrow) / 86400000) + 1;
 generateCount = Math.min(generateCount, 31);
 $row_time.children().on('click', function() {
-  if ($row_time.focusTime)
+  if ($row_time.focusTime) {
     $row_time.focusTime.removeClass('selected');
+  }
   $(this).addClass('selected');
   $row_time.focusTime = $(this);
 });
@@ -129,51 +192,31 @@ const isComplete = function() {
   let ok = true;
   switch (state) {
     case 0:
-      // return true;
       return $row_date.focusDate && $row_time.focusTime;
     case 1:
-      // return true;
-      $.each($('.fill-info .required'), (i, input) => {
-        if (!input.value) {
+      steps[1]['inputs'].forEach((item) => {
+        if (!item.check(item.ele)) {
           ok = false;
-          return false;
-        }
-      });
-      $.each($('.fill-info .select'), (i, select) => {
-        if (select.selectedIndex == 0) {
-          ok = false;
-          return false;
         }
       });
       return ok;
     case 2:
-      if (!$checkRead[0].checked) {
-        console.log('notY');
-        return false;
-      }
-      if ($radioCredit[0].checked) {
-        $.each($('.pay .credit-method .required'), (i, input) => {
-          if (!input.value) {
-            ok = false;
-            return false;
-          }
-        });
-        $.each($('.pay .credit-method .select'), (i, select) => {
-          if (select.selectedIndex == 0) {
-            ok = false;
-            return false;
-          }
-        });
-      }
+      const payMethod = $('#pay input[name=pay-method]:checked').attr('data-inputs');
+      steps[2][payMethod].forEach((item) => {
+        if (!item.check(item.ele)) {
+          ok = false;
+        }
+      });
+      steps[2]['agrees'].forEach((item) => {
+        if (!item.check(item.ele)) {
+          ok = false;
+        }
+      });
       return ok;
   }
-  console.log('here');
   return false;
 };
 $lastStep.on('click', function() {
-  // if (!isComplete()) {
-  //   return;
-  // }
   state--;
   if (state < 0) {
     state = 0;
@@ -198,21 +241,7 @@ $nextStep.on('click', function() {
   $stepList[state - 1].classList.remove('on');
   $stepList[state].classList.add('on');
 });
-
-
 // fill-info
-const $inputPhone = $('#input_phone');
-$inputPhone.lastStr = '';
-$inputPhone.on('input', function() {
-  const num = $inputPhone.val();
-  if (!isOnlyNum($inputPhone)) {
-    return;
-  }
-  $inputPhone.lastStr = num;
-});
-
-
-
 
 // pay
 const $creditMethod = $(document.querySelector('.credit-method'));
@@ -223,15 +252,15 @@ $('#credit, #atm').on('change', (e) => {
     $creditMethod.slideUp(200);
   }
 });
-const isOnlyNum = function($ele) {
-  const num = $ele.val();
-  const trimNum = num.replaceAll(' ', '');
-  if (!trimNum.match(/(^\d+$|^$)/)) {
-    $ele.val($ele.lastStr);
-    return false;
-  }
-  return true;
-};
+// const isOnlyNum = function($ele) {
+//   const num = $ele.val();
+//   const trimNum = num.replaceAll(' ', '');
+//   if (!trimNum.match(/(^\d+$|^$)/)) {
+//     $ele.val($ele.lastStr);
+//     return false;
+//   }
+//   return true;
+// };
 const $inputCredit = $('#input_credit');
 const $inputSecurity = $('#input_security');
 $inputCredit.lastStr = '';
@@ -239,11 +268,6 @@ $inputCredit.realStr = '';
 $inputSecurity.lastStr = '';
 $inputCredit.on('input', (e) => {
   const num = $inputCredit.val();
-  // let cursorIndex = $inputCredit[0].selectionStart;
-  // console.log(cursorIndex);
-  if (!isOnlyNum($inputCredit)) {
-    return;
-  }
   $inputCredit.realStr = num.replaceAll(' ', '');
   // format
   let output = '';
@@ -255,18 +279,6 @@ $inputCredit.on('input', (e) => {
   }
   $inputCredit.lastStr = output;
   $inputCredit.val(output);
-  // if (cursorIndex % 5 == 0 && cursorIndex != 0) {
-  //   cursorIndex++;
-  // }
-  // $inputCredit[0].setSelectionRange(cursorIndex, cursorIndex);
-});
-$inputSecurity.on('input', function() {
-  const num = $inputSecurity.val();
-  let cursorIndex = $inputCredit[0].selectionStart;
-  if (!isOnlyNum($inputSecurity)) {
-    return;
-  }
-  $inputSecurity.lastStr = num;
 });
 // invoice
 const invoiceData = {
@@ -309,7 +321,7 @@ $('.my-dropdown .head-list').on('blur', (e) => {
     $checkbox.click();
   }
 });
-// rule
+// rule 同意後才可按下一步
 // const $read = $('.rule #read');
 // $read.on('change', function() {
 //   if (this.checked) {

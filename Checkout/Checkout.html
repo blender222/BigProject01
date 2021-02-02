@@ -20,8 +20,6 @@
             <div class="barGroup">
               <div class="barFront"></div>
               <div class="barBack"></div>
-              <!-- <div class="bar"></div>
-              <div class="bar"></div> -->
             </div>
             <div class="numGroup">
               <div class="num on">1</div>
@@ -39,15 +37,39 @@
         </div>
       </div>
       <div class="col col-12 col-lg-5">
-        <div class="block block_emp">
-          <img src="https://picsum.photos/100/100/?random=1">
+        <div class="block block_items">
+          <img src="https://picsum.photos/200/200/?random=1">
           <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptas deserunt, esse molestias porro explicabo quis cum iure nihil! Maxime, suscipit quaerat libero nulla cumque nesciunt. Excepturi quia animi obcaecati facere!</p>
+          <div class="item">
+            <div class="place">
+              <span class="key">空間類型:</span><span class="value">客廳</span>
+            </div>
+            <div class="name">
+              <span class="key">服務類型:</span><span class="value">鐘點清潔</span>
+            </div>
+            <div class="hours">
+              <span class="key">時數:</span><span class="value">3</span>
+            </div>
+            <button class="btn_set-time">選擇日期</button>
+          </div>
+          <div class="item">
+            <div class="place">
+              <span class="key">空間類型:</span><span class="value"></span>
+            </div>
+            <div class="name">
+              <span class="key">服務類型:</span><span class="value">鐘點清潔</span>
+            </div>
+            <div class="hours">
+              <span class="key">時數:</span><span class="value">3</span>
+            </div>
+            <button class="btn_set-time">選擇日期</button>
+          </div>
         </div>
       </div>
 
       <div class="col col-12 col-lg-7">
         <main class="block block_main">
-          <div class="step pick-time on">
+          <div id="pick-time" class="step pick-time on">
             <h5 class="title">選擇預約日期</h5>
             <div class="row_head">
               <div class="button-box">
@@ -77,27 +99,63 @@
             <div class="row_date" id="row_date">
             </div>
             <div class="row_time" id="row_time">
-              <div class="time"><div class="text">08:00</div></div>
-              <div class="time"><div class="text">08:30</div></div>
-              <div class="time"><div class="text">09:00</div></div>
-              <div class="time"><div class="text">09:30</div></div>
-              <div class="time"><div class="text">10:00</div></div>
-              <div class="time"><div class="text">10:30</div></div>
-              <div class="time"><div class="text">11:00</div></div>
-              <div class="time"><div class="text">11:30</div></div>
-              <div class="time"><div class="text">13:00</div></div>
-              <div class="time"><div class="text">13:30</div></div>
-              <div class="time"><div class="text">14:00</div></div>
-              <div class="time"><div class="text">14:30</div></div>
-              <div class="time"><div class="text">15:00</div></div>
-              <div class="time"><div class="text">15:30</div></div>
-              <div class="time"><div class="text">16:00</div></div>
-              <div class="time"><div class="text">16:30</div></div>
-              <div class="time"><div class="text">17:00</div></div>
-              <div class="time"><div class="text">17:30</div></div>
+              <div class="time">
+                <div class="text">08:00</div>
+              </div>
+              <div class="time">
+                <div class="text">08:30</div>
+              </div>
+              <div class="time">
+                <div class="text">09:00</div>
+              </div>
+              <div class="time">
+                <div class="text">09:30</div>
+              </div>
+              <div class="time">
+                <div class="text">10:00</div>
+              </div>
+              <div class="time">
+                <div class="text">10:30</div>
+              </div>
+              <div class="time">
+                <div class="text">11:00</div>
+              </div>
+              <div class="time">
+                <div class="text">11:30</div>
+              </div>
+              <div class="time">
+                <div class="text">13:00</div>
+              </div>
+              <div class="time">
+                <div class="text">13:30</div>
+              </div>
+              <div class="time">
+                <div class="text">14:00</div>
+              </div>
+              <div class="time">
+                <div class="text">14:30</div>
+              </div>
+              <div class="time">
+                <div class="text">15:00</div>
+              </div>
+              <div class="time">
+                <div class="text">15:30</div>
+              </div>
+              <div class="time">
+                <div class="text">16:00</div>
+              </div>
+              <div class="time">
+                <div class="text">16:30</div>
+              </div>
+              <div class="time">
+                <div class="text">17:00</div>
+              </div>
+              <div class="time">
+                <div class="text">17:30</div>
+              </div>
             </div>
           </div>
-          <div class="step fill-info">
+          <div id="fill-info" class="step fill-info">
             <form class="form">
               <div class="form_contact">
                 <h5 class="sub-title">
@@ -110,7 +168,7 @@
                   </div>
                   <div class="formGroup">
                     <p class="key">手機</p>
-                    <input id="input_phone" class="value required" type="text" name="phone" placeholder="0912345678" maxlength="10">
+                    <input id="input_phone" class="value required only-num" type="text" name="phone" placeholder="0912345678" maxlength="10">
                   </div>
                   <div class="formGroup">
                     <p class="key">Email</p>
@@ -130,7 +188,7 @@
                     <select class="select" name="district" id="district-list">
                       <option selected disabled>選擇地區</option>
                     </select>
-                    <input class="value required" type="text" name="address" placeholder="請填上正確的地址">
+                    <input id="input_address" class="value required" type="text" name="address" placeholder="請填上正確的地址">
                   </div>
                 </div>
               </div>
@@ -142,7 +200,7 @@
               </div>
             </form>
           </div>
-          <div class="step pay">
+          <div id="pay" class="step pay">
             <form class="form">
               <div class="form_method">
                 <h5 class="sub-title">
@@ -150,7 +208,7 @@
                 </h5>
                 <div class="content">
                   <div class="method-box">
-                    <input id="credit" type="radio" name="credit-card" data-i="0" checked>
+                    <input id="credit" type="radio" name="pay-method" data-i="0" data-inputs="creditInputs" checked>
                     <label class="label" for="credit">
                       <span class="type">
                         線上刷卡
@@ -170,11 +228,11 @@
                       <div class="formGroup formGroup_num df">
                         <div class="dfc">
                           <p class="key">信用卡號碼</p>
-                          <input id="input_credit" class="value required" type="text" name="credit-num" placeholder="XXXX XXXX XXXX XXXX" maxlength="19">
+                          <input id="input_credit" class="value required only-num" type="text" name="credit-num" placeholder="XXXX XXXX XXXX XXXX" maxlength="19">
                         </div>
                         <div class="dfc">
                           <p class="key">安全碼</p>
-                          <input id="input_security" class="value required" type="text" name="security-code" placeholder="123" maxlength="3">
+                          <input id="input_security" class="value required only-num" type="text" name="security-code" placeholder="123" maxlength="3">
                         </div>
                       </div>
                       <div class="formGroup">
@@ -203,7 +261,7 @@
                     </div>
                   </div>
                   <div class="method-box">
-                    <input id="atm" type="radio" name="credit-card" data-i="1">
+                    <input id="atm" type="radio" name="pay-method" data-i="1" data-inputs="atmInputs">
                     <label class="label" for="atm">
                       <span class="type">
                         ATM轉帳
@@ -264,7 +322,7 @@
                 </div>
               </div>
               <label class="rule" for="read">
-                <input id="read" type="checkbox">
+                <input id="read" class="agree-check" type="checkbox">
                 <span class="text">我已閱讀
                   <a data-toggle="modal" data-target="#no-service-range">未清潔範圍</a> 、
                   <a data-toggle="modal" data-target="#change-policy">取消或更改服務政策</a> 、
@@ -274,7 +332,7 @@
               </label>
             </form>
           </div>
-          <div class="step done">
+          <div id="done" class="step done">
 
           </div>
 

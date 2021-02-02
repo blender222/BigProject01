@@ -88,6 +88,7 @@
     }
   }
   .button {
+    user-select: none;
     border: none;
     &:hover {
       transition: filter .3s;
@@ -321,7 +322,6 @@
 .pay {
   display: none;
   .method {
-    // display: none;
     margin-bottom: 10px;
   }
   .credit-method {
@@ -686,12 +686,10 @@
 }
 @keyframes fadeOut {
   0% {
-    // display: none;
     height: 0;
     opacity: 0;
   }
   100% {
-    // display: block;
     height: 200px;
     opacity: 1;
   }
