@@ -9,30 +9,100 @@ const disableBtn = (btn) => {
   btn.attr('disabled', '');
   btn.addClass('disable');
 };
-$.ajax({
-  type: 'GET',
-  url: './json/districts.json',
-  dataType: 'json',
-  success: (data) => {
-    const $countyList = $('#county-list');
-    const $districtList = $('#district-list');
-    data.forEach((item) => {
-      let option = document.createElement('option');
-      option.text = item.name;
-      $countyList[0].add(option);
-    });
-    $countyList.on('change', function() {
-      let districtList = $districtList[0];
-      let prompt = districtList.firstElementChild;
-      $districtList.empty();
-      $districtList.append(prompt);
-      data[this.selectedIndex - 1].districts.forEach((item) => {
+
+// $.ajax({
+//   type: 'GET',
+//   url: './json/districts.json',
+//   dataType: 'json',
+//   success: (data) => {
+//     const $countyList = $('#county-list');
+//     const $districtList = $('#district-list');
+//     data.forEach((item) => {
+//       let option = document.createElement('option');
+//       option.text = item.name;
+//       $countyList[0].add(option);
+//     });
+//     $countyList.on('change', function() {
+//       let districtList = $districtList[0];
+//       let prompt = districtList.firstElementChild;
+//       $districtList.empty();
+//       $districtList.append(prompt);
+//       data[this.selectedIndex - 1].districts.forEach((item) => {
+//         let option = document.createElement('option');
+//         option.text = item.name;
+//         districtList.add(option);
+//       });
+//     });
+//   }
+// });
+const $countyList = $('#county-list');
+const $districtList = $('#district-list');
+const county = [{
+    "name": "臺北市",
+    "districts": [
+        {"name": "中正區"},
+        {"name": "大同區"},
+        {"name": "中山區"},
+        {"name": "松山區"},
+        {"name": "大安區"},
+        {"name": "萬華區"},
+        {"name": "信義區"},
+        {"name": "士林區"},
+        {"name": "北投區"},
+        {"name": "內湖區"},
+        {"name": "南港區"},
+        {"name": "文山區"}
+    ]
+},
+{
+    "name": "新北市",
+    "districts": [
+        {"name": "萬里區"},
+        {"name": "金山區"},
+        {"name": "板橋區"},
+        {"name": "汐止區"},
+        {"name": "深坑區"},
+        {"name": "石碇區"},
+        {"name": "瑞芳區"},
+        {"name": "平溪區"},
+        {"name": "雙溪區"},
+        {"name": "貢寮區"},
+        {"name": "新店區"},
+        {"name": "坪林區"},
+        {"name": "烏來區"},
+        {"name": "永和區"},
+        {"name": "中和區"},
+        {"name": "土城區"},
+        {"name": "三峽區"},
+        {"name": "樹林區"},
+        {"name": "鶯歌區"},
+        {"name": "三重區"},
+        {"name": "新莊區"},
+        {"name": "泰山區"},
+        {"name": "林口區"},
+        {"name": "蘆洲區"},
+        {"name": "五股區"},
+        {"name": "八里區"},
+        {"name": "淡水區"},
+        {"name": "三芝區"},
+        {"name": "石門區"}
+    ]
+}];
+county.forEach((item) => {
+    let option = document.createElement('option');
+    option.text = item.name;
+    $countyList[0].add(option);
+});
+$countyList.on('change', function () {
+    let districtList = $districtList[0];
+    let prompt = districtList.firstElementChild;
+    $districtList.empty();
+    $districtList.append(prompt);
+    county[this.selectedIndex - 1].districts.forEach((item) => {
         let option = document.createElement('option');
         option.text = item.name;
         districtList.add(option);
-      });
     });
-  }
 });
 // model區
 const hasInput = (ele) => ele.value.length != 0;

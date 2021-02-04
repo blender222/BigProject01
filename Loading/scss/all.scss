@@ -1,0 +1,81 @@
+$width: 300px;
+.box {
+  position: relative;
+  width: $width;
+  height: $width;
+}
+.box .line {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  margin: auto;
+  width: $width * 0.05;
+  height: $width * 0.16;
+  background-color: #eee;
+}
+@keyframes fading {
+  0% {
+    background-color: #cccccc;
+  }
+  15% {
+    background-color: #000000;
+  }
+  30% {
+    background-color: #cccccc;
+  }
+  100% {
+    background-color: #cccccc;
+  }
+}
+$duration: 1.2s;
+$innerRate: 0.3;
+.box .line:nth-child(1) {
+  transform: rotate(calc(360 / 12 * 0deg)) translateY($width * $innerRate);
+  animation: fading $duration linear ($duration / 12 * 0) infinite;
+}
+.box .line:nth-child(2) {
+  transform: rotate(calc(360 / 12 * 1deg)) translateY($width * $innerRate);
+  animation: fading $duration linear ($duration / 12 * 1) infinite;
+}
+.box .line:nth-child(3) {
+  transform: rotate(calc(360 / 12 * 2deg)) translateY($width * $innerRate);
+  animation: fading $duration linear ($duration / 12 * 2) infinite;
+}
+.box .line:nth-child(4) {
+  transform: rotate(calc(360 / 12 * 3deg)) translateY($width * $innerRate);
+  animation: fading $duration linear ($duration / 12 * 3) infinite;
+}
+.box .line:nth-child(5) {
+  transform: rotate(calc(360 / 12 * 4deg)) translateY($width * $innerRate);
+  animation: fading $duration linear ($duration / 12 * 4) infinite;
+}
+.box .line:nth-child(6) {
+  transform: rotate(calc(360 / 12 * 5deg)) translateY($width * $innerRate);
+  animation: fading $duration linear ($duration / 12 * 5) infinite;
+}
+.box .line:nth-child(7) {
+  transform: rotate(calc(360 / 12 * 6deg)) translateY($width * $innerRate);
+  animation: fading $duration linear ($duration / 12 * 6) infinite;
+}
+.box .line:nth-child(8) {
+  transform: rotate(calc(360 / 12 * 7deg)) translateY($width * $innerRate);
+  animation: fading $duration linear ($duration / 12 * 7) infinite;
+}
+.box .line:nth-child(9) {
+  transform: rotate(calc(360 / 12 * 8deg)) translateY($width * $innerRate);
+  animation: fading $duration linear ($duration / 12 * 8) infinite;
+}
+.box .line:nth-child(10) {
+  transform: rotate(calc(360 / 12 * 9deg)) translateY($width * $innerRate);
+  animation: fading $duration linear ($duration / 12 * 9) infinite;
+}
+.box .line:nth-child(11) {
+  transform: rotate(calc(360 / 12 * 10deg)) translateY($width * $innerRate);
+  animation: fading $duration linear ($duration / 12 * 10) infinite;
+}
+.box .line:nth-child(12) {
+  transform: rotate(calc(360 / 12 * 11deg)) translateY($width * $innerRate);
+  animation: fading $duration linear ($duration / 12 * 11) infinite;
+}

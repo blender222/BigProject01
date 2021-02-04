@@ -38,19 +38,19 @@
 <body>
   <div class="container">
     <div class="box">
-      <svg class="star" idth="48" height="48" viewBox="0 0 24 24">
+      <svg class="star" width="48" height="48" viewBox="0 0 24 24">
         <use xlink:href="./svg/star.svg#star"></use>
       </svg>
-      <svg class="star" idth="48" height="48" viewBox="0 0 24 24">
+      <svg class="star" width="48" height="48" viewBox="0 0 24 24">
         <use xlink:href="./svg/star.svg#star"></use>
       </svg>
-      <svg class="star" idth="48" height="48" viewBox="0 0 24 24">
+      <svg class="star" width="48" height="48" viewBox="0 0 24 24">
         <use xlink:href="./svg/star.svg#star"></use>
       </svg>
-      <svg class="star" idth="48" height="48" viewBox="0 0 24 24">
+      <svg class="star" width="48" height="48" viewBox="0 0 24 24">
         <use xlink:href="./svg/star.svg#star"></use>
       </svg>
-      <svg class="star" idth="48" height="48" viewBox="0 0 24 24">
+      <svg class="star" width="48" height="48" viewBox="0 0 24 24">
         <use xlink:href="./svg/star.svg#star"></use>
       </svg>
     </div>
@@ -58,6 +58,7 @@
   <script>
     const box = document.querySelector(".box");
     const allStar = box.querySelectorAll(".star");
+    let starGrade = null;
     allStar.forEach((ele, index) => {
       ele.rank = index;
       const clearAllStar = (list) => {
@@ -81,14 +82,14 @@
       });
       ele.addEventListener("click", function(event) {
         box.clickRank = this.rank;
-        for (let i = 0; i < this.rank; i++) {}
+        console.log(this.rank);
+        // for (let i = 0; i < this.rank; i++) {}
       });
-
     });
   </script>
 
 
-  <style>
+  <!-- <style>
     svg {
       outline: 1px solid #ff0000;
     }
@@ -101,7 +102,7 @@
   </style>
   <svg width="600" height="600" viewBox="0 0 600 600" version="1.1" xmlns="http://www.w3.org/2000/svg">
     <line x1="0" y1="50" x2="600" y2="50" />
-  </svg>
+  </svg> -->
 
 
 
