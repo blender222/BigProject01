@@ -1,4 +1,4 @@
-$width: 300px;
+$width: 400px;
 .box {
   position: relative;
   width: $width;
@@ -30,7 +30,7 @@ $width: 300px;
   }
 }
 $duration: 1.2s;
-$innerRate: 0.3;
+$innerRate: 0.35;
 .box .line:nth-child(1) {
   transform: rotate(calc(360 / 12 * 0deg)) translateY($width * $innerRate);
   animation: fading $duration linear ($duration / 12 * 0) infinite;
