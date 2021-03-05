@@ -9,101 +9,209 @@ const disableBtn = (btn) => {
   btn.attr('disabled', '');
   btn.addClass('disable');
 };
-
-// $.ajax({
-//   type: 'GET',
-//   url: './json/districts.json',
-//   dataType: 'json',
-//   success: (data) => {
-//     const $countyList = $('#county-list');
-//     const $districtList = $('#district-list');
-//     data.forEach((item) => {
-//       let option = document.createElement('option');
-//       option.text = item.name;
-//       $countyList[0].add(option);
-//     });
-//     $countyList.on('change', function() {
-//       let districtList = $districtList[0];
-//       let prompt = districtList.firstElementChild;
-//       $districtList.empty();
-//       $districtList.append(prompt);
-//       data[this.selectedIndex - 1].districts.forEach((item) => {
-//         let option = document.createElement('option');
-//         option.text = item.name;
-//         districtList.add(option);
-//       });
-//     });
-//   }
-// });
 const $countyList = $('#county-list');
 const $districtList = $('#district-list');
 const county = [{
     "name": "臺北市",
-    "districts": [
-        {"name": "中正區"},
-        {"name": "大同區"},
-        {"name": "中山區"},
-        {"name": "松山區"},
-        {"name": "大安區"},
-        {"name": "萬華區"},
-        {"name": "信義區"},
-        {"name": "士林區"},
-        {"name": "北投區"},
-        {"name": "內湖區"},
-        {"name": "南港區"},
-        {"name": "文山區"}
+    "districts": [{
+        "name": "中正區"
+      },
+      {
+        "name": "大同區"
+      },
+      {
+        "name": "中山區"
+      },
+      {
+        "name": "松山區"
+      },
+      {
+        "name": "大安區"
+      },
+      {
+        "name": "萬華區"
+      },
+      {
+        "name": "信義區"
+      },
+      {
+        "name": "士林區"
+      },
+      {
+        "name": "北投區"
+      },
+      {
+        "name": "內湖區"
+      },
+      {
+        "name": "南港區"
+      },
+      {
+        "name": "文山區"
+      }
     ]
-},
-{
+  },
+  {
     "name": "新北市",
-    "districts": [
-        {"name": "萬里區"},
-        {"name": "金山區"},
-        {"name": "板橋區"},
-        {"name": "汐止區"},
-        {"name": "深坑區"},
-        {"name": "石碇區"},
-        {"name": "瑞芳區"},
-        {"name": "平溪區"},
-        {"name": "雙溪區"},
-        {"name": "貢寮區"},
-        {"name": "新店區"},
-        {"name": "坪林區"},
-        {"name": "烏來區"},
-        {"name": "永和區"},
-        {"name": "中和區"},
-        {"name": "土城區"},
-        {"name": "三峽區"},
-        {"name": "樹林區"},
-        {"name": "鶯歌區"},
-        {"name": "三重區"},
-        {"name": "新莊區"},
-        {"name": "泰山區"},
-        {"name": "林口區"},
-        {"name": "蘆洲區"},
-        {"name": "五股區"},
-        {"name": "八里區"},
-        {"name": "淡水區"},
-        {"name": "三芝區"},
-        {"name": "石門區"}
+    "districts": [{
+        "name": "萬里區"
+      },
+      {
+        "name": "金山區"
+      },
+      {
+        "name": "板橋區"
+      },
+      {
+        "name": "汐止區"
+      },
+      {
+        "name": "深坑區"
+      },
+      {
+        "name": "石碇區"
+      },
+      {
+        "name": "瑞芳區"
+      },
+      {
+        "name": "平溪區"
+      },
+      {
+        "name": "雙溪區"
+      },
+      {
+        "name": "貢寮區"
+      },
+      {
+        "name": "新店區"
+      },
+      {
+        "name": "坪林區"
+      },
+      {
+        "name": "烏來區"
+      },
+      {
+        "name": "永和區"
+      },
+      {
+        "name": "中和區"
+      },
+      {
+        "name": "土城區"
+      },
+      {
+        "name": "三峽區"
+      },
+      {
+        "name": "樹林區"
+      },
+      {
+        "name": "鶯歌區"
+      },
+      {
+        "name": "三重區"
+      },
+      {
+        "name": "新莊區"
+      },
+      {
+        "name": "泰山區"
+      },
+      {
+        "name": "林口區"
+      },
+      {
+        "name": "蘆洲區"
+      },
+      {
+        "name": "五股區"
+      },
+      {
+        "name": "八里區"
+      },
+      {
+        "name": "淡水區"
+      },
+      {
+        "name": "三芝區"
+      },
+      {
+        "name": "石門區"
+      }
     ]
-}];
+  }
+];
 county.forEach((item) => {
+  let option = document.createElement('option');
+  option.text = item.name;
+  $countyList[0].add(option);
+});
+$countyList.on('change', function() {
+  let districtList = $districtList[0];
+  let prompt = districtList.firstElementChild;
+  $districtList.empty();
+  $districtList.append(prompt);
+  county[this.selectedIndex - 1].districts.forEach((item) => {
     let option = document.createElement('option');
     option.text = item.name;
-    $countyList[0].add(option);
+    districtList.add(option);
+  });
 });
-$countyList.on('change', function () {
-    let districtList = $districtList[0];
-    let prompt = districtList.firstElementChild;
-    $districtList.empty();
-    $districtList.append(prompt);
-    county[this.selectedIndex - 1].districts.forEach((item) => {
-        let option = document.createElement('option');
-        option.text = item.name;
-        districtList.add(option);
-    });
-});
+// 資訊區
+const dateService = {
+  obj: new Date(),
+  date: null,
+  time: null,
+  totalHours: null,
+  set setDate(t) {
+    this.date = true;
+    this.allSet();
+  },
+  set setTime(t) {
+    this.time = true;
+    this.allSet();
+  },
+  allSet: function() {
+    if (this.date && this.time) {
+      let ele_date = document.createElement('div');
+      let ele_time = document.createElement('div');
+      ele_date.classList.add('date');
+      ele_date.classList.add('time');
+      let pickY = this.obj.getFullYear();
+      let pickM = (parseInt(this.obj.getMonth()) + 1).toString().padStart(2, '0');
+      let pickD = this.obj.getDate().toString().padStart(2, '0');
+      let pickHour = this.obj.getHours().toString().padStart(2, '0');
+      let pickMin = this.obj.getMinutes().toString().padStart(2, '0');
+      ele_date.textContent = `${pickY}-${pickM}-${pickD}`;
+      ele_time.textContent = `${pickHour}:${pickMin}`;
+      const $serviceDate = $('#service-date');
+      const $value = $('#service-date .value');
+      $value.empty();
+      $value.append(ele_date, ele_time);
+      $serviceDate.addClass('set');
+    }
+  },
+};
+const addressService = {
+  county: () => $('#county-list').val(),
+  district: () => $('#district-list').val(),
+  address: () => $('#input_address').val(),
+};
+const printAddress = function() {
+  for (const key in addressService) {
+    if (addressService[key]() == null) return;
+  }
+  const strCounty = addressService.county();
+  const strDistrict = addressService.district();
+  const strAddress = addressService.address();
+  $('#address .value').text(`${strCounty} ${strDistrict} ${strAddress}`);
+  $('#address').addClass('set');
+};
+$('#input_address').on('change', printAddress);
+$countyList.on('change', printAddress);
+$districtList.on('change', printAddress);
 // model區
 const hasInput = (ele) => ele.value.length != 0;
 const hasSelect = (ele) => ele.selectedIndex != 0;
@@ -113,53 +221,55 @@ const steps = [{
   inputs: [{
     ele: document.querySelector('#fill-info #input_name'),
     check: hasInput,
+    warn: '請輸入您的姓名',
   }, {
     ele: document.querySelector('#fill-info #input_phone'),
-    check: (ele) => ele.value.length == 10,
+    check: (ele) => (/^09\d{2}\-?\d{3}\-?\d{3}$/).test(ele.value),
+    warn: '請輸入正確的手機號碼，例如: 0912345678',
   }, {
     ele: document.querySelector('#fill-info #input_email'),
     check: hasInput,
+    warn: '請輸入正確的email',
   }, {
     ele: document.querySelector('#fill-info #county-list'),
     check: hasSelect,
+    warn: '必填欄位',
   }, {
     ele: document.querySelector('#fill-info #district-list'),
     check: hasSelect,
+    warn: '必填欄位',
   }, {
     ele: document.querySelector('#fill-info #input_address'),
     check: hasInput,
+    warn: '請輸入正確的地址',
   }],
-  selects: document.querySelectorAll('#fill-info .select'),
 }, {
   creditInputs: [{
     ele: document.querySelector('#pay #input_credit'),
     check: (ele) => ele.value.length == 19,
+    warn: '請輸入有效的信用卡號碼',
   }, {
     ele: document.querySelector('#pay #input_security'),
     check: (ele) => ele.value.length == 3,
+    warn: '請輸入信用卡背面的安全碼',
   }, {
     ele: document.querySelector('#pay #input_expireM'),
     check: hasSelect,
+    warn: '必填欄位',
   }, {
     ele: document.querySelector('#pay #input_expireY'),
     check: hasSelect,
+    warn: '必填欄位',
   }],
   atmInputs: [],
   agrees: [{
     ele: document.querySelector('#pay #read'),
     check: (ele) => ele.checked,
+    warn: '請閱讀並確認勾選以上內容',
   }],
 }, {
 
 }];
-const test = function() {
-  steps[2].agrees.forEach((item) => {
-    console.log(item.check(item.ele));
-    // if (item.check(item.ele)) {
-
-    // }
-  });
-};
 // common event
 const onlyNum = $('.only-num');
 onlyNum.on('input', function() {
@@ -195,6 +305,12 @@ const makeMonth = (obj_startDate, count) => {
       }
       $(this).addClass('selected');
       $row_date.focusDate = $(this);
+      dateService.obj.setFullYear(
+        this.obj_date.getFullYear(),
+        this.obj_date.getMonth(),
+        this.obj_date.getDate()
+      );
+      dateService.setDate = true;
     });
     // 恢復高亮上次選取
     if ($row_date.focusDate) {
@@ -242,12 +358,43 @@ $btn_nextM.on('click', function() {
 });
 let generateCount = ((obj_nextMonthEnd - obj_tomorrow) / 86400000) + 1;
 generateCount = Math.min(generateCount, 31);
+// 產生time方塊
+const createTime = (workTime) => {
+  let time = document.createElement('div');
+  let text = document.createElement('div');
+  time.classList.add('time');
+  text.classList.add('text');
+  const hh = workTime.getHours().toString().padStart(2, '0');
+  const mm = workTime.getMinutes().toString().padStart(2, '0');
+  text.textContent = `${hh}:${mm}`;
+  time.appendChild(text);
+  time.workTime = new Date(workTime);
+  return time;
+};
+let workTime = new Date();
+workTime.setHours(8);
+workTime.setMinutes(0);
+for (let i = 0; i < 4; i++) {
+  ele = createTime(workTime);
+  $('#row_time').append(ele);
+  workTime.setMinutes(workTime.getMinutes() + 30);
+}
+workTime.setHours(13);
+workTime.setMinutes(0);
+for (let i = 0; i < 12; i++) {
+  ele = createTime(workTime);
+  $('#row_time').append(ele);
+  workTime.setMinutes(workTime.getMinutes() + 30);
+}
 $row_time.children().on('click', function() {
   if ($row_time.focusTime) {
     $row_time.focusTime.removeClass('selected');
   }
   $(this).addClass('selected');
   $row_time.focusTime = $(this);
+  dateService.obj.setHours(this.workTime.getHours());
+  dateService.obj.setMinutes(this.workTime.getMinutes());
+  dateService.setTime = true;
 });
 // 上下一步
 const $lastStep = $("#last-step");
@@ -262,11 +409,21 @@ const isComplete = function() {
   let ok = true;
   switch (state) {
     case 0:
-      return $row_date.focusDate && $row_time.focusTime;
+      if ($row_date.focusDate && $row_time.focusTime) {
+        return true;
+      } else {
+        toastr.remove();
+        toastr.error('請選擇日期');
+        return false;
+      }
+      break;
     case 1:
       steps[1]['inputs'].forEach((item) => {
         if (!item.check(item.ele)) {
           ok = false;
+          $(item.ele).next('.warn').text(item.warn);
+        } else {
+          $(item.ele).next('.warn').text('');
         }
       });
       return ok;
@@ -275,11 +432,17 @@ const isComplete = function() {
       steps[2][payMethod].forEach((item) => {
         if (!item.check(item.ele)) {
           ok = false;
+          $(item.ele).next('.warn').text(item.warn);
+        } else {
+          $(item.ele).next('.warn').text('');
         }
       });
       steps[2]['agrees'].forEach((item) => {
         if (!item.check(item.ele)) {
           ok = false;
+          $(item.ele).siblings('.warn').text(item.warn);
+        } else {
+          $(item.ele).siblings('.warn').text('');
         }
       });
       return ok;
@@ -303,7 +466,7 @@ $nextStep.on('click', function() {
   }
   state++;
   if (state > 3) {
-    state = 0;
+    state = 3;
     return;
   }
   $barFront.css('width', `${33.333 * state}%`);
@@ -322,15 +485,6 @@ $('#credit, #atm').on('change', (e) => {
     $creditMethod.slideUp(200);
   }
 });
-// const isOnlyNum = function($ele) {
-//   const num = $ele.val();
-//   const trimNum = num.replaceAll(' ', '');
-//   if (!trimNum.match(/(^\d+$|^$)/)) {
-//     $ele.val($ele.lastStr);
-//     return false;
-//   }
-//   return true;
-// };
 const $inputCredit = $('#input_credit');
 const $inputSecurity = $('#input_security');
 $inputCredit.lastStr = '';
@@ -352,6 +506,7 @@ $inputCredit.on('input', (e) => {
 });
 // invoice
 const invoiceData = {
+  // 傳回後端用
   invoiceI: 0,
   foundationI: 0
 };
@@ -391,22 +546,31 @@ $('.my-dropdown .head-list').on('blur', (e) => {
     $checkbox.click();
   }
 });
-// rule 同意後才可按下一步
-// const $read = $('.rule #read');
-// $read.on('change', function() {
-//   if (this.checked) {
-//     enableBtn($nextStep);
-//   } else {
-//     disableBtn($nextStep);
-//   }
-// });
+// toastr
+toastr.options = {
+  "closeButton": false,
+  "debug": false,
+  "newestOnTop": false,
+  "progressBar": false,
+  "positionClass": "toast-top-center",
+  "preventDuplicates": false,
+  "onclick": null,
+  "showDuration": "200",
+  "hideDuration": "1000",
+  "timeOut": "2500",
+  "extendedTimeOut": "1000",
+  "showEasing": "swing",
+  "hideEasing": "linear",
+  "showMethod": "fadeIn",
+  "hideMethod": "fadeOut"
+};
 // 初始化
-// disableBtn($nextStep);
 let year = obj_now.getFullYear().toString().substring(2);
 const endYear = parseInt(year) + 25;
 for (; year < endYear; year++) {
   $('#input_expireY').append(`<option>${year}</option>`);
 }
 $("[data-toggle=tooltip").tooltip();
+// main
 makeMonth(obj_tomorrow, generateCount);
 // })();

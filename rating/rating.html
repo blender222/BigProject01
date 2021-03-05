@@ -58,20 +58,17 @@
   <script>
     const box = document.querySelector(".box");
     const allStar = box.querySelectorAll(".star");
-    let starGrade = null;
     allStar.forEach((ele, index) => {
       ele.rank = index;
       const clearAllStar = (list) => {
         list.forEach((ele) => {
-          ele.classList.remove("hover");
-          ele.classList.remove("active");
+          ele.classList.remove("hover", "active");
         });
       }
       ele.addEventListener("mouseenter", function() {
         clearAllStar(allStar);
         for (let i = 0; i <= index; i++) {
-          allStar[i].classList.add("hover");
-          allStar[i].classList.add("active");
+          allStar[i].classList.add("hover","active");
         }
       });
       ele.addEventListener("mouseleave", function() {
@@ -83,7 +80,6 @@
       ele.addEventListener("click", function(event) {
         box.clickRank = this.rank;
         console.log(this.rank);
-        // for (let i = 0; i < this.rank; i++) {}
       });
     });
   </script>

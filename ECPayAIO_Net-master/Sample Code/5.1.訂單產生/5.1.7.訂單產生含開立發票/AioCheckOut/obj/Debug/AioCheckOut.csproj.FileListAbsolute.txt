@@ -1,0 +1,8 @@
+C:\Users\bluee\programing\BigProject01\ECPayAIO_Net-master\Sample Code\5.1.訂單產生\5.1.7.訂單產生含開立發票\AioCheckOut\bin\AioCheckOut.dll.config
+C:\Users\bluee\programing\BigProject01\ECPayAIO_Net-master\Sample Code\5.1.訂單產生\5.1.7.訂單產生含開立發票\AioCheckOut\bin\AioCheckOut.dll
+C:\Users\bluee\programing\BigProject01\ECPayAIO_Net-master\Sample Code\5.1.訂單產生\5.1.7.訂單產生含開立發票\AioCheckOut\bin\AioCheckOut.pdb
+C:\Users\bluee\programing\BigProject01\ECPayAIO_Net-master\Sample Code\5.1.訂單產生\5.1.7.訂單產生含開立發票\AioCheckOut\obj\Debug\AioCheckOut.csprojAssemblyReference.cache
+C:\Users\bluee\programing\BigProject01\ECPayAIO_Net-master\Sample Code\5.1.訂單產生\5.1.7.訂單產生含開立發票\AioCheckOut\obj\Debug\AioCheckOut.csproj.CoreCompileInputs.cache
+C:\Users\bluee\programing\BigProject01\ECPayAIO_Net-master\Sample Code\5.1.訂單產生\5.1.7.訂單產生含開立發票\AioCheckOut\obj\Debug\AioCheckOut.csproj.CopyComplete
+C:\Users\bluee\programing\BigProject01\ECPayAIO_Net-master\Sample Code\5.1.訂單產生\5.1.7.訂單產生含開立發票\AioCheckOut\obj\Debug\AioCheckOut.dll
+C:\Users\bluee\programing\BigProject01\ECPayAIO_Net-master\Sample Code\5.1.訂單產生\5.1.7.訂單產生含開立發票\AioCheckOut\obj\Debug\AioCheckOut.pdb

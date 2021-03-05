@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <div id="app">
+    <h1>{{ Title }}</h1>
+    <h2 v-if="x > 10">{{ x }}</h2>
+    <p v-if="visiableA == true">AAA</p>
+    <p v-show="visiableB == true">BBB</p>
+    <ul>
+      <li v-for="i in arrayData">{{i.Name}}: {{i.Age}}</li>
+    </ul>
+    <input v-model="inputA" type="text">
+    <input v-model="inputB" type="text">
+    
+    <ul>
+      <li v-for="i in arrayData">
+        <div>Name: <span>{{ i.Name }}</span></div>
+        <div>Price: <span>{{ i.Price }}</span></div>
+        <div>Amount: <input v-model="i.Amount" type="number" min="0"></div>
+      </li>
+    </ul>
+    
+    <p>小計: {{ plus }}</p>
+    
+    <button v-on:click="getSum">Click Me</button><br/>
+    <input type="text" v-model="inputData">
+  </div>
+
+
+
+  <script src="https://cdn.jsdelivr.net/npm/vue@2.6.12/dist/vue.js"></script>
+  <script>
+    let app = new Vue({
+      el: '#app',
+      data: {
+        Title: 'HelloWorld',
+        x: 11,
+        visiableA: false,
+        visiableB: false,
+        arrayData: [
+          { Name: '紅酒', Age: 10, Price: 20, Amount: 1},
+          { Name: '清酒', Age: 24 , Price: 60, Amount: 1}
+        ],
+        inputA: '',
+        inputB: '',
+        ans: '',
+        inputData: '',
+      },
+      methods: {
+        SayHi: function() {
+          console.log('Hi');
+        },
+        getSum: function() {
+          this.ans = parseInt(this.inputA) + parseInt(this.inputB);
+        },
+      },
+      watch: {
+        inputData: function() {
+          if (/^\d*$/.test(this.inputData)) {
+            console.log('isN');
+          } else {
+            console.log('NAN');
+          }
+        },
+        inputA: function() {
+          if (/^\d*$/.test(this.inputA + this.inputB)) {
+            this.ans = parseInt(this.inputA) + parseInt(this.inputB);
+          }
+        },
+        arrayData: {
+          immediate: true,
+          handler: function() {
+            this.arrayData.forEach((x) => {
+              this.total += x.Price;
+            });
+          }
+        },
+        plus: function() {
+          console.log('plus change');
+        }
+      },
+      computed: {
+        plus: function() {
+          let result = 0;
+          this.arrayData.forEach((x) => {
+            result += parseInt(x.Price) * parseInt(x.Amount);
+          });
+          return result;
+        }
+      }
+    });
+  </script>
+</body>
+
+</html>

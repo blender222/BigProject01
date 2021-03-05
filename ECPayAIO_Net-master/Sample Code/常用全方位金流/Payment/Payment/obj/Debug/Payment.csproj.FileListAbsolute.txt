@@ -1,0 +1,8 @@
+C:\Users\bluee\programing\BigProject01\ECPayAIO_Net-master\Sample Code\常用全方位金流\Payment\Payment\bin\Payment.dll.config
+C:\Users\bluee\programing\BigProject01\ECPayAIO_Net-master\Sample Code\常用全方位金流\Payment\Payment\bin\Payment.dll
+C:\Users\bluee\programing\BigProject01\ECPayAIO_Net-master\Sample Code\常用全方位金流\Payment\Payment\bin\Payment.pdb
+C:\Users\bluee\programing\BigProject01\ECPayAIO_Net-master\Sample Code\常用全方位金流\Payment\Payment\obj\Debug\Payment.csprojAssemblyReference.cache
+C:\Users\bluee\programing\BigProject01\ECPayAIO_Net-master\Sample Code\常用全方位金流\Payment\Payment\obj\Debug\Payment.csproj.CoreCompileInputs.cache
+C:\Users\bluee\programing\BigProject01\ECPayAIO_Net-master\Sample Code\常用全方位金流\Payment\Payment\obj\Debug\Payment.csproj.CopyComplete
+C:\Users\bluee\programing\BigProject01\ECPayAIO_Net-master\Sample Code\常用全方位金流\Payment\Payment\obj\Debug\Payment.dll
+C:\Users\bluee\programing\BigProject01\ECPayAIO_Net-master\Sample Code\常用全方位金流\Payment\Payment\obj\Debug\Payment.pdb

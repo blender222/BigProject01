@@ -1,0 +1,464 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <title>Document</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@100;300;400;500;700;900&display=swap" rel="stylesheet">
+  <script src="https://kit.fontawesome.com/a3d014418a.js" crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="./MemberCenter.min.css">
+</head>
+
+<body>
+  <div class="container-fluid">
+    <label class="side-menu-label" for="side-menu-check">
+      <i class="fas fa-th-list"></i>
+    </label>
+    <input id="side-menu-check" type="checkbox">
+    <div class="side-menu">
+      <div class="data-box">
+        <div class="data">
+          <div class="value">0</div>
+          <div class="key">預約中</div>
+        </div>
+        <div class="data">
+          <div class="value">0</div>
+          <div class="key">通知</div>
+        </div>
+        <div class="data">
+          <div class="value">0</div>
+          <div class="key">優惠券</div>
+        </div>
+      </div>
+      <div class="nav flex-column nav-pills" id="nav-list" role="tablist" aria-orientation="vertical">
+        <a class="nav-link active" data-toggle="pill" href="#member-info">會員資料</a>
+        <a class="nav-link" data-toggle="pill" href="#order">我的訂單</a>
+        <a class="nav-link" data-toggle="pill" href="#coupon">我的優惠券</a>
+        <a class="nav-link" data-toggle="pill" href="#favorite">我的收藏</a>
+      </div>
+    </div>
+    <div class="main">
+      <div class="block tab-pane fade show active" id="member-info">
+        <h2 class="title">會員資料</h2>
+        <div class="content">
+          <form action="/" method="POST">
+            <div class="kv-box name">
+              <div class="key">暱稱</div>
+              <div class="value">blender222</div>
+            </div>
+            <div class="kv-box phone">
+              <div class="key">手機號碼</div>
+              <div class="value">0948522586</div>
+            </div>
+            <div class="kv-box email">
+              <div class="key">E-mail</div>
+              <div class="value">sean@gmail.com</div>
+            </div>
+            <div class="kv-box address">
+              <div class="key">服務地址</div>
+              <div class="value">台北市信義區101大樓台北市信義區101大樓</div>
+            </div>
+            <div class="btn-box">
+              <button id="btn-change-password" class="button light db" type="button" data-toggle="modal" data-target="#modal-changePassword">修改密碼</button>
+              <button id="btn-change-info" class="button dark db" type="button">編輯會員資料</button>
+              <button id="btn-change-cancel" class="button gray" type="button">取消</button>
+              <button id="btn-change-ok" class="button dark" type="button">完成</button>
+            </div>
+          </form>
+        </div>
+      </div>
+      <div class="block tab-pane fade" id="order">
+        <h2 class="title">我的訂單</h2>
+        <ul id="order-sort" class="nav nav-pills" role="tablist">
+          <li class="nav-item">
+            <a class="nav-link active" data-toggle="pill" href="#order-all">全部</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" data-toggle="pill" href="#order-paid">已付款</a>
+            <span class="count">1</span>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" data-toggle="pill" href="#order-unpaid">未付款</a>
+            <span class="count">1</span>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" data-toggle="pill" href="#order-finished">完成</a>
+          </li>
+        </ul>
+        <div class="content">
+          <div class="tab-pane fade show active" id="order-all" role="tabpanel">
+            <div class="card">
+              <div class="card-header">
+                <div class="orderDate kv-box">
+                  <div class="key">
+                    <i class="icon fas fa-clock"></i>
+                  </div>
+                  <div class="value">
+                    <div class="date">2021-03-05</div>
+                    <div class="time">22:22</div>
+                  </div>
+                </div>
+                <div class="orderState">完成</div>
+              </div>
+              <div class="card-body">
+                <div class="brief-box">
+                  <div class="kv-box address">
+                    <div class="key">
+                      <i class="icon fas fa-home"></i>
+                    </div>
+                    <div class="value">台北市信義區101大樓台北市信義區101大樓</div>
+                  </div>
+                  <div class="total">
+                    <div class="key">訂單金額:</div>
+                    <div class="value">1500</div>
+                  </div>
+                </div>
+                <button class="button detail light" type="button">查看訂單詳情</button>
+                <button class="button comment dark" type="button" data-toggle="modal" data-target="#modal-comment">給個評價</button>
+              </div>
+            </div>
+            <div class="card">
+              <div class="card-header">
+                <div class="orderDate kv-box">
+                  <div class="key">
+                    <i class="icon fas fa-clock"></i>
+                  </div>
+                  <div class="value">
+                    <div class="date">2021-03-03</div>
+                    <div class="time">22:22</div>
+                  </div>
+                </div>
+                <div class="orderState">已付款</div>
+              </div>
+              <div class="card-body">
+                
+              </div>
+            </div>
+            <div class="card">
+              <div class="card-header">
+                <div class="orderDate kv-box">
+                  <div class="key">
+                    <i class="icon fas fa-clock"></i>
+                  </div>
+                  <div class="value">
+                    <div class="date">2021-03-01</div>
+                    <div class="time">22:22</div>
+                  </div>
+                </div>
+                <div class="orderState">未付款</div>
+              </div>
+              <div class="card-body">
+                
+              </div>
+            </div>
+          </div>
+          <div class="tab-pane fade" id="order-paid" role="tabpanel">
+            <div class="card">
+              <div class="card-header">
+                <div class="orderDate kv-box">
+                  <div class="key">
+                    <i class="icon fas fa-clock"></i>
+                  </div>
+                  <div class="value">
+                    <div class="date">2021-03-05</div>
+                    <div class="time">22:22</div>
+                  </div>
+                </div>
+                <div class="orderState">未付款</div>
+              </div>
+              <div class="card-body">
+                <div class="brief-box">
+                  <div class="kv-box address">
+                    <div class="key">
+                      <i class="icon fas fa-home"></i>
+                    </div>
+                    <div class="value">台北市信義區101大樓台北市信義區101大樓</div>
+                  </div>
+                  <div class="total">
+                    <div class="key">訂單金額:</div>
+                    <div class="value">1500</div>
+                  </div>
+                </div>
+                <button class="button detail light" type="button">查看訂單詳情</button>
+              </div>
+            </div>
+          </div>
+          <div class="tab-pane fade" id="order-unpaid" role="tabpanel">
+            <div class="card">
+              <div class="card-header">
+                <div class="orderDate kv-box">
+                  <div class="key">
+                    <i class="icon fas fa-clock"></i>
+                  </div>
+                  <div class="value">
+                    <div class="date">2021-03-05</div>
+                    <div class="time">22:22</div>
+                  </div>
+                </div>
+                <div class="orderState">未付款</div>
+              </div>
+              <div class="card-body">
+                <div class="brief-box">
+                  <div class="kv-box address">
+                    <div class="key">
+                      <i class="icon fas fa-home"></i>
+                    </div>
+                    <div class="value">台北市信義區101大樓台北市信義區101大樓</div>
+                  </div>
+                  <div class="total">
+                    <div class="key">訂單金額:</div>
+                    <div class="value">1500</div>
+                  </div>
+                </div>
+                <button class="button detail light" type="button">查看訂單詳情</button>
+                <button class="button comment dark" type="button">前往付款</button>
+              </div>
+            </div>
+          </div>
+          <div class="tab-pane fade" id="order-finished" role="tabpanel">
+            <div class="card">
+              <div class="card-header">
+                <div class="orderDate kv-box">
+                  <div class="key">
+                    <i class="icon fas fa-clock"></i>
+                  </div>
+                  <div class="value">
+                    <div class="date">2021-03-05</div>
+                    <div class="time">22:22</div>
+                  </div>
+                </div>
+                <div class="orderState">未付款</div>
+              </div>
+              <div class="card-body">
+                <div class="brief-box">
+                  <div class="kv-box address">
+                    <div class="key">
+                      <i class="icon fas fa-home"></i>
+                    </div>
+                    <div class="value">台北市信義區101大樓台北市信義區101大樓</div>
+                  </div>
+                  <div class="total">
+                    <div class="key">訂單金額:</div>
+                    <div class="value">1500</div>
+                  </div>
+                </div>
+                <button class="button detail light" type="button">查看訂單詳情</button>
+                <button class="button comment dark" type="button" data-toggle="modal" data-target="#modal-comment">給個評價</button>
+              </div>
+            </div>
+          </div>
+          <div class="layer detail">
+            <div class="head-box">
+              <button class="btn_back" type="button">回上頁</button>
+              <div class="orderState">未付款</div>
+            </div>
+            <div class="data name">
+              無名氏
+            </div>
+            <div class="data phone">
+              0928222437
+            </div>
+            <div class="data email">
+              sean@gmail.com
+            </div>
+            <div class="data address">
+              台北市信義區101大樓台北市信義區101大樓
+            </div>
+            <div class="data date-service kv-box">
+              <div class="key">服務日期:</div>
+              <div class="value">
+                <span class="date">2021-03-05</span>
+                <span class="time">22:22</span>
+              </div>
+            </div>
+            <div class="data date-order kv-box">
+              <div class="key">訂單成立:</div>
+              <div class="value">
+                <span class="date">2021-03-05</span>
+                <span class="time">22:22</span>
+              </div>
+            </div>
+            <button id="btn_favorite" class="button dark" data-toggle="modal" data-target="#modal-favorite">收藏詳細資訊</button>
+          </div>
+        </div>
+      </div>
+      <div class="block tab-pane fade" id="coupon">
+        <h2 class="title">我的優惠券</h2>
+        <div class="content">
+
+        </div>
+      </div>
+      <div class="block tab-pane fade" id="favorite">
+        <h2 class="title">我的收藏</h2>
+        <div class="content">
+
+        </div>
+      </div>
+
+
+    </div>
+
+  </div>
+  <div id="modal-changePassword" class="modal" tabindex="-1">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <form id="form-changePassword">
+          <div class="modal-header">
+            <h5 class="modal-title">修改密碼</h5>
+            <button type="button" class="close" data-dismiss="modal">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <div class="kv-box">
+              <div class="key">原來密碼</div>
+              <input class="value" type="password">
+            </div>
+            <div class="kv-box">
+              <div class="key">新的密碼</div>
+              <input class="value" type="password">
+            </div>
+            <div class="kv-box">
+              <div class="key">再次確認新密碼</div>
+              <input class="value" type="password">
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="button gray" data-dismiss="modal">取消</button>
+            <button type="button" class="button dark">確認修改</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+  <div id="modal-comment" class="modal" tabindex="-1">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <form id="form-comment">
+          <div class="modal-header">
+            <h5 class="modal-title">評價這次服務</h5>
+            <button type="button" class="close" data-dismiss="modal">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <div class="star-box">
+              <svg class="star" viewBox="0 0 24 24">
+                <!-- <use xlink:href="/Assets/Images/star.svg#star"></use> -->
+                <use xlink:href="./img/star.svg#star"></use>
+              </svg>
+              <svg class="star" viewBox="0 0 24 24">
+                <!-- <use xlink:href="/Assets/Images/star.svg#star"></use> -->
+                <use xlink:href="./img/star.svg#star"></use>
+              </svg>
+              <svg class="star" viewBox="0 0 24 24">
+                <!-- <use xlink:href="/Assets/Images/star.svg#star"></use> -->
+                <use xlink:href="./img/star.svg#star"></use>
+              </svg>
+              <svg class="star" viewBox="0 0 24 24">
+                <!-- <use xlink:href="/Assets/Images/star.svg#star"></use> -->
+                <use xlink:href="./img/star.svg#star"></use>
+              </svg>
+              <svg class="star" viewBox="0 0 24 24">
+                <!-- <use xlink:href="/Assets/Images/star.svg#star"></use> -->
+                <use xlink:href="./img/star.svg#star"></use>
+              </svg>
+            </div>
+            <input id="starRate" type="hidden">
+            <textarea name="comment" rows="7"></textarea>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="button gray" data-dismiss="modal">取消</button>
+            <button type="submit" class="button dark">送出</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+  <div id="modal-favorite" class="modal" tabindex="-1">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">{{ ProductName }}</h5>
+          <button type="button" class="close" data-dismiss="modal">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <div class="item-box">
+            <div class="item" v-for="item in UserDefinedList">
+              <div class="place kv-box">
+                <span class="key">
+                  <i class="icon fas fa-house-user"></i>
+                </span>
+                <span class="value">{{ item.RoomType }}</span>
+                <span class="square-feet">({{ item.SquareFeet }})</span>
+              </div>
+              <div class="service-type kv-box">
+                <span class="key">
+                  <i class="icon fas fa-user-friends"></i>
+                </span>
+                <span class="value">{{ item.ServiceItems }}</span>
+              </div>
+              <div class="hours kv-box">
+                <div class="key">
+                  <i class="icon fas fa-clock"></i>
+                </div>
+                <div class="value">
+                  <span class="num">{{ item.Hour }}</span>
+                  <span class="unit">hr</span>
+                  <span>x</span>
+                  <span class="num">500</span>
+                  <span class="unit">元/hr</span>
+                  <span class="subtotal">{{ item.Hour * 500 }}</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="item" v-for="item in packageList">
+              <div class="place" v-for="n in packageList[0].RoomType.length">
+                <span class="key">
+                  <i class="icon fas fa-house-user"></i>
+                </span>
+                <span class="value">{{ item.RoomType[n - 1] }}</span>
+                <span class="square-feet">({{ item.SquareFeet[n - 1] }})</span>
+              </div>
+              <div class="service-type">
+                <span class="key">
+                  <i class="icon fas fa-user-friends"></i>
+                </span>
+                <span class="value">{{ item.ServiceItems }}</span>
+              </div>
+              <div class="hours">
+                <div class="key">
+                  <i class="icon fas fa-clock"></i>
+                </div>
+                <div class="value">
+                  <div class="num">{{ item.Hour }}</div>
+                  <div class="unit">hr</div>
+                  <div>x</div>
+                  <div class="num">500</div>
+                  <div class="unit">元/hr</div>
+                  <div class="subtotal">{{ item.Price }}</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="button gray" data-dismiss="modal">返回</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/vue@2.6.12/dist/vue.js"></script>
+  <script src="https://code.jquery.com/jquery-3.5.1.min.js" integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-Piv4xVNRyMGpqkS2by6br4gNJ7DXjqk09RmUpJ8jgGtD7zP9yug3goQfGII0yAns" crossorigin="anonymous"></script>
+  <script src="./MemberCenter.js"></script>
+</body>
+
+</html>

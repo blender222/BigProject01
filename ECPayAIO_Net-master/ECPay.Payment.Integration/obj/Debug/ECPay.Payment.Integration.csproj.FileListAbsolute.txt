@@ -1,0 +1,7 @@
+C:\Users\bluee\programing\BigProject01\ECPayAIO_Net-master\ECPay.Payment.Integration\bin\Debug\ECPay.Payment.Integration.xml
+C:\Users\bluee\programing\BigProject01\ECPayAIO_Net-master\ECPay.Payment.Integration\bin\Debug\ECPay.Payment.Integration.dll
+C:\Users\bluee\programing\BigProject01\ECPayAIO_Net-master\ECPay.Payment.Integration\bin\Debug\ECPay.Payment.Integration.pdb
+C:\Users\bluee\programing\BigProject01\ECPayAIO_Net-master\ECPay.Payment.Integration\obj\Debug\ECPay.Payment.Integration.csprojAssemblyReference.cache
+C:\Users\bluee\programing\BigProject01\ECPayAIO_Net-master\ECPay.Payment.Integration\obj\Debug\ECPay.Payment.Integration.csproj.CoreCompileInputs.cache
+C:\Users\bluee\programing\BigProject01\ECPayAIO_Net-master\ECPay.Payment.Integration\obj\Debug\ECPay.Payment.Integration.dll
+C:\Users\bluee\programing\BigProject01\ECPayAIO_Net-master\ECPay.Payment.Integration\obj\Debug\ECPay.Payment.Integration.pdb

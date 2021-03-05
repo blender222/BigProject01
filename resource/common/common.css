@@ -1,11 +1,23 @@
 @import url("https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@100;300;400;500;700;900&display=swap");
 @import url("https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css");
 :root {
-  --color-primary: #31c89b;
+  --font-family: 'Noto Sans TC', sans-serif;
+  --color-primary: #62b2f3;
+  --color-primary-dark: #3684c3;
+  --color-primary-light: #cde1f1;
+  --color-primary-soLight: hsl(207, 100%, 95%);
+  --color-primary-hover: hsl(207, 100%, 90%);
+  --color-primary-selected: hsl(207, 100%, 80%);
+  --white: #fff;
+  --gray: #aaa;
+  --dark-blue: #1c4a70;
+  --yellow: #ffd000;
+  --black: #000;
+  --light: #f8f9fa;
+  --dark: #333;
   --color-second: #40916c;
   --color-lightGray: #999999;
   --color-darkGray: #333333;
   --color-warn: #ff424f;
   --color-warnBg: #fff6f7;
-  --font-family: 'Noto Sans TC', sans-serif;
 }
