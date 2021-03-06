@@ -45,27 +45,33 @@
         <h2 class="title">會員資料</h2>
         <div class="content">
           <form action="/" method="POST">
-            <div class="kv-box name">
-              <div class="key">暱稱</div>
-              <div class="value">blender222</div>
+            <div class="kv-box account-name">
+              <div class="key">帳號</div>
+              <div class="value">{{ AccountName }}</div>
             </div>
             <div class="kv-box phone">
               <div class="key">手機號碼</div>
-              <div class="value">0948522586</div>
+              <div class="value" v-if="!isInput">{{ Phone }}</div>
+              <input class="value" v-else v-bind:class="{warnInput: isPhoneOk}" type="text" v-model="Phone">
             </div>
+            <div class="warnText" v-if=""></div>
             <div class="kv-box email">
               <div class="key">E-mail</div>
-              <div class="value">sean@gmail.com</div>
+              <div class="value" v-if="!isInput">{{ Email }}</div>
+              <input class="value" v-else v-bind:class="{warnInput: isEmailOk}" type="text" v-model="Email">
             </div>
+            <div class="warnText" v-if=""></div>
             <div class="kv-box address">
               <div class="key">服務地址</div>
-              <div class="value">台北市信義區101大樓台北市信義區101大樓</div>
+              <div class="value" v-if="!isInput">{{ Address }}</div>
+              <input class="value" v-else  v-bind:class="{warnInput: isAddressOk}" type="text" v-model="Address">
             </div>
+            <div class="warnText" v-if=""></div>
             <div class="btn-box">
-              <button id="btn-change-password" class="button light db" type="button" data-toggle="modal" data-target="#modal-changePassword">修改密碼</button>
-              <button id="btn-change-info" class="button dark db" type="button">編輯會員資料</button>
-              <button id="btn-change-cancel" class="button gray" type="button">取消</button>
-              <button id="btn-change-ok" class="button dark" type="button">完成</button>
+              <button id="btn-change-password" class="button light" type="button" v-show="!isInput" @click="clearInput" data-toggle="modal" data-target="#modal-changePassword">修改密碼</button>
+              <button id="btn-change-info" class="button dark" type="button" v-show="!isInput" @click="changeInfo">編輯會員資料</button>
+              <button id="btn-change-cancel" class="button gray" type="button" v-show="isInput" @click="changeCancel">取消</button>
+              <button id="btn-change-ok" class="button dark" type="button" v-show="isInput" @click="changeOk">完成</button>
             </div>
           </form>
         </div>
@@ -77,7 +83,7 @@
             <a class="nav-link active" data-toggle="pill" href="#order-all">全部</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" data-toggle="pill" href="#order-paid">已付款</a>
+            <a class="nav-link" data-toggle="pill" href="#order-paid">預約中</a>
             <span class="count">1</span>
           </li>
           <li class="nav-item">
@@ -90,7 +96,7 @@
         </ul>
         <div class="content">
           <div class="tab-pane fade show active" id="order-all" role="tabpanel">
-            <div class="card">
+            <div class="card order-item">
               <div class="card-header">
                 <div class="orderDate kv-box">
                   <div class="key">
@@ -116,8 +122,10 @@
                     <div class="value">1500</div>
                   </div>
                 </div>
-                <button class="button detail light" type="button">查看訂單詳情</button>
-                <button class="button comment dark" type="button" data-toggle="modal" data-target="#modal-comment">給個評價</button>
+                <div class="df">
+                  <button class="button detail light" type="button">查看訂單詳情</button>
+                  <button class="button comment dark" type="button" data-toggle="modal" data-target="#modal-comment">給個評價</button>
+                </div>
               </div>
             </div>
             <div class="card">
@@ -255,33 +263,134 @@
               <button class="btn_back" type="button">回上頁</button>
               <div class="orderState">未付款</div>
             </div>
-            <div class="data name">
-              無名氏
-            </div>
-            <div class="data phone">
-              0928222437
-            </div>
-            <div class="data email">
-              sean@gmail.com
-            </div>
-            <div class="data address">
-              台北市信義區101大樓台北市信義區101大樓
-            </div>
-            <div class="data date-service kv-box">
-              <div class="key">服務日期:</div>
-              <div class="value">
-                <span class="date">2021-03-05</span>
-                <span class="time">22:22</span>
+            <div class="body-box">
+              <div id="info-box">
+                <div class="card">
+                  <div class="card-header">聯絡資訊</div>
+                  <div class="card-body">
+                    <div class="data name">
+                      無名氏
+                    </div>
+                    <div class="data phone">
+                      0928222437
+                    </div>
+                    <div class="data email">
+                      sean@gmail.com
+                    </div>
+                  </div>
+                </div>
+                <div class="card">
+                  <div class="card-header">服務地址</div>
+                  <div class="card-body">
+                    <div class="data address">
+                      台北市信義區101大樓台北市信義區101大樓
+                    </div>
+                  </div>
+                </div>
+                <div class="card">
+                  <div class="card-header">
+                    <div class="head w-50">服務日期</div>
+                    <div class="head w-50">訂單成立</div>
+                  </div>
+                  <div class="card-body df">
+                    <div class="w-50">
+                      <span class="date">2021-03-05</span>
+                      <span class="time">22:22</span>
+                    </div>
+                    <div class="w-50">
+                      <span class="date">2021-02-23</span>
+                      <span class="time">22:22</span>
+                    </div>
+                  </div>
+                </div>
+                <div class="card">
+                  <div class="card-header">付款方式</div>
+                  <div class="card-body">
+                    <div class="data paymentType">{{ PaymentType }}</div>
+                  </div>
+                </div>
+                <div class="card invoice">
+                  <div class="card-body">
+                    <span class="head pr-1 mr-2">發票</span>
+                    <span>{{ InvoiceType }}</span>
+                  </div>
+                  <div class="card-body" v-if="InvoiceDonateTo">
+                    <span class="head pr-1 mr-2">捐贈</span>
+                    <span>{{ InvoiceDonateTo }}</span>
+                  </div>
+                </div>
+                <button id="btn_favorite" class="button dark" data-toggle="modal" data-target="#modal-favorite">收藏詳細資訊</button>
+              </div>
+              <div id="layer-item-box">
+                <div id="favorite-name">{{ ProductName }}</div>
+                <div class="item-box">
+                  <div class="item" v-for="item in UserDefinedList">
+                    <div class="place kv-box">
+                      <span class="key">
+                        <i class="icon fas fa-house-user"></i>
+                      </span>
+                      <span class="value">{{ item.RoomType }}</span>
+                      <span class="square-feet">({{ item.SquareFeet }})</span>
+                    </div>
+                    <div class="service-type kv-box">
+                      <span class="key">
+                        <i class="icon fas fa-user-friends"></i>
+                      </span>
+                      <span class="value">{{ item.ServiceItems }}</span>
+                    </div>
+                    <div class="hours kv-box">
+                      <div class="key">
+                        <i class="icon fas fa-clock"></i>
+                      </div>
+                      <div class="value">
+                        <span class="num">{{ item.Hour }}</span>
+                        <span class="unit">hr</span>
+                        <span>x</span>
+                        <span class="num">500</span>
+                        <span class="unit">元/hr</span>
+                        <span class="subtotal">{{ item.Hour * 500 }}</span>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="item" v-for="item in packageList">
+                    <div class="place" v-for="n in packageList[0].RoomType.length">
+                      <span class="key">
+                        <i class="icon fas fa-house-user"></i>
+                      </span>
+                      <span class="value">{{ item.RoomType[n - 1] }}</span>
+                      <span class="square-feet">({{ item.SquareFeet[n - 1] }})</span>
+                    </div>
+                    <div class="service-type">
+                      <span class="key">
+                        <i class="icon fas fa-user-friends"></i>
+                      </span>
+                      <span class="value">{{ item.ServiceItems }}</span>
+                    </div>
+                    <div class="hours">
+                      <div class="key">
+                        <i class="icon fas fa-clock"></i>
+                      </div>
+                      <div class="value">
+                        <div class="num">{{ item.Hour }}</div>
+                        <div class="unit">hr</div>
+                        <div>x</div>
+                        <div class="num">500</div>
+                        <div class="unit">元/hr</div>
+                        <div class="subtotal">{{ item.Price }}</div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="coupon">
+                  <span class="key">折扣</span>
+                  <span class="money">{{ DiscountAmount }}</span>
+                </div>
+                <div class="final kv-box">
+                  <span class="key">總計</span>
+                  <span class="money">{{ FinalPrice }}</span>
+                </div>
               </div>
             </div>
-            <div class="data date-order kv-box">
-              <div class="key">訂單成立:</div>
-              <div class="value">
-                <span class="date">2021-03-05</span>
-                <span class="time">22:22</span>
-              </div>
-            </div>
-            <button id="btn_favorite" class="button dark" data-toggle="modal" data-target="#modal-favorite">收藏詳細資訊</button>
           </div>
         </div>
       </div>
@@ -297,8 +406,7 @@
 
         </div>
       </div>
-
-
+      
     </div>
 
   </div>
@@ -315,20 +423,23 @@
           <div class="modal-body">
             <div class="kv-box">
               <div class="key">原來密碼</div>
-              <input class="value" type="password">
+              <input class="value" v-bind:class="{warnInput: !isOldPasswordOk}" v-model="oldPassword" type="password" maxlength="15">
+              <div class="warnText" v-if="!isOldPasswordOk">{{ errorMsgOld }}</div>
             </div>
             <div class="kv-box">
-              <div class="key">新的密碼</div>
-              <input class="value" type="password">
+              <div class="key">新的密碼<span class="remind"> (英文大小寫各1位, 至少6位不包含特殊符號)</span></div>
+              <input class="value" v-bind:class="{warnInput: !isNewPasswordOk}" v-model="newPassword" type="password" maxlength="15">
+              <div class="warnText" v-if="!isNewPasswordOk">{{ errorMsgNew }}</div>
             </div>
             <div class="kv-box">
               <div class="key">再次確認新密碼</div>
-              <input class="value" type="password">
+              <input class="value" v-bind:class="{warnInput: !isNewPasswordOk}" v-model="newPassword2" type="password" maxlength="15">
+              <div class="warnText" v-if="!isNewPasswordOk">{{ errorMsgNew }}</div>
             </div>
           </div>
           <div class="modal-footer">
             <button type="button" class="button gray" data-dismiss="modal">取消</button>
-            <button type="button" class="button dark">確認修改</button>
+            <button type="button" class="button dark" @click="submitPassword">確認修改</button>
           </div>
         </form>
       </div>
@@ -446,6 +557,14 @@
                 </div>
               </div>
             </div>
+          </div>
+          <div class="coupon">
+            <span class="key">折扣</span>
+            <span class="money">{{ DiscountAmount }}</span>
+          </div>
+          <div class="final">
+            <span class="key">總計</span>
+            <span class="money">{{ FinalPrice }}</span>
           </div>
         </div>
         <div class="modal-footer">
